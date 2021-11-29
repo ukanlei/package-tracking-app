@@ -2,7 +2,24 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputTrackingNum">Tracking number</label>
+            <input type="text" class="form-control" id="inputTrackingNum" placeholder="Enter tracking number">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputState">Carrier</label>
+            <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>UPS</option>
+                <option>FedEx</option>
+                <option>DHL Express</option>
+                <option>USPS</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

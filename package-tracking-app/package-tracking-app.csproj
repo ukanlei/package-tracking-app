@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
     <None Remove="ViewModels\" />
+    <None Remove="Views\Setting\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -25,5 +26,6 @@
 
   <ItemGroup>
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Setting\" />
   </ItemGroup>
 </Project>

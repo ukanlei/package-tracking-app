@@ -8,10 +8,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace package_tracking_app.Controllers
 {
-    public class TrackingController : Controller
+    public class SettingController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
+        // GET: /<controller>/
+        [HttpGet]
+        public IActionResult Notifications()
         {
             return View();
         }
