@@ -8,11 +8,12 @@
 
   <ItemGroup>
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
-    <None Remove="ViewModels\" />
     <None Remove="Views\Setting\" />
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Migrations\" />
+    <None Remove="ViewModel\" />
+    <None Remove="Views\TrackingPackages\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -30,8 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Setting\" />
     <Folder Include="Migrations\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\TrackingPackages\" />
   </ItemGroup>
 </Project>
