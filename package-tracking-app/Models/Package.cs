@@ -1,18 +1,21 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace package_tracking_app.Models
 {
     public class Package
     {
         public int Id { get; set; } //primary key
-        public int TrackingNumber { get; set; }
+        public string TrackingNumber { get; set; }
         public string Carrier { get; set; }
+        public string Description { get; set; }
 
         public Package()
         {
   
         }
 
-        public Package(int trackingNumber, string carrier)
+        public Package(string trackingNumber, string carrier)
         {
             TrackingNumber = trackingNumber;
             Carrier = carrier;
