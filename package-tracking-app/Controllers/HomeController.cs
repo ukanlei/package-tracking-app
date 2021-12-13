@@ -44,7 +44,7 @@ namespace package_tracking_app.Controllers
 
                 context.Packages.Add(newPackage);
                 context.SaveChanges();
-                return RedirectToAction("Index","TrackingPackages");
+                return RedirectToAction("Index","TrackPackages");
             }
 
             return View("Index", addPackageViewModel);

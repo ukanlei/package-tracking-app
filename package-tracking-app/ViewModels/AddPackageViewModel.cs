@@ -6,7 +6,6 @@ namespace package_tracking_app.ViewModels
     public class AddPackageViewModel
     {
         [Required(ErrorMessage = "Tracking number required")]
-        [RegularExpression (@"^[0-9]*$", ErrorMessage = "Please enter a valid tracking number")]
         public string TrackingNumber { get; set; }
 
         [Required(ErrorMessage = "Carrier required")]

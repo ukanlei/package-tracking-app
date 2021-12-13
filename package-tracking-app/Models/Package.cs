@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace package_tracking_app.Models
@@ -20,5 +21,7 @@ namespace package_tracking_app.Models
             TrackingNumber = trackingNumber;
             Carrier = carrier;
         }
+
+      
     }
 }
