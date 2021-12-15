@@ -13,6 +13,7 @@
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Migrations\" />
+    <None Remove="Areas\Identity\Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -33,5 +34,6 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Setting\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Areas\Identity\Data\" />
   </ItemGroup>
 </Project>

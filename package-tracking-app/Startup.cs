@@ -12,6 +12,7 @@ using package_tracking_app.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using package_tracking_app.Areas.Identity.Data;
 
 namespace package_tracking_app
 {
@@ -32,7 +33,7 @@ namespace package_tracking_app
                     Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8,0,26))));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages(); 
