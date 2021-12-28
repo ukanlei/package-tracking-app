@@ -1,15 +1,6 @@
 ﻿@model List<package_tracking_app.Models.Package>
-@*add button that lets user add new packages*@
-@*show package info. If no package, dispaly message say "There are no packages"*@
-@*Add edit button*@
-@*ADD DELETE button*@
-
-@*when button is clicked, add form shows up*@
-
 
 <a asp-controller="Home" asp-action="Index"> Add another package</a>
-
-
 @if (Model.Count == 0)
 {
     <p>There are no packages to track yet!</p>

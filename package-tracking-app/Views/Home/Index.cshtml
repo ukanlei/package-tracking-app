@@ -1,35 +1,3 @@
-﻿@using package_tracking_app.ViewModels
-@model AddPackageViewModel;
+﻿@*add partial view for parcel form*@
 
-<h1>Start adding packages!</h1>
-
-<form asp-controller="Home" asp-action="ProcessAddForm">
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label asp-for="TrackingNumber">Tracking number</label>
-            <input type="text" class="form-control" id="TrackingNumber" asp-for="TrackingNumber" placeholder="Enter tracking number">
-            <span asp-validation-for="TrackingNumber"></span>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label asp-for="Carrier">Carrier</label>
-            <select asp-for="Carrier" id="Carrier" class="form-control">
-                <option selected>Choose...</option>
-                <option>UPS</option>
-                <option>FedEx</option>
-                <option>DHL Express</option>
-                <option>USPS</option>
-            </select>
-            <span asp-validation-for="Carrier"></span>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label asp-for="Description">Description</label>
-            <input type="text" class="form-control" id="Description" asp-for="Description" placeholder="Enter a description">
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
+<partial name="~/Views/Shared/_AddParcelFormPartial.cshtml"/>
