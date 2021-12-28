@@ -6,23 +6,46 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using package_tracking_app.Data;
 using package_tracking_app.Models;
+using package_tracking_app.ViewModels;
+using Shippo;
 
 namespace package_tracking_app.Controllers
 {
     public class TrackPackagesController : Controller
     {
-
         private ApplicationDbContext context;
 
         public TrackPackagesController(ApplicationDbContext dbContext)
         {
             context = dbContext;
         }
- 
+
+        //retrieve stataus info from Shippo and add to local model class
+        public IActionResult GetStatus()
+        {
+            APIResource resource = new APIResource("");
+            string TRACKING_NO = "SHIPPO_DELIVERED";
+            Track track = resource.RetrieveTracking("shippo", TRACKING_NO);
+
+            TrackingStatusModel status = new TrackingStatusModel(track.TrackingStatus.Status, track.TrackingStatus.Location.City, track.TrackingStatus.Location.State, track.TrackingStatus.StatusDate);
+
+            return View(status);
+        }
+
+        //retrieve tracking history from Shippo and add to local model class
+        public IActionResult GetTrackingHistory()
+        {
+            APIResource resource = new APIResource("");
+            string TRACKING_NO = "SHIPPO_DELIVERED";
+            Track track = resource.RetrieveTracking("shippo", TRACKING_NO);
+            TrackingHistoryModel checkpoints = new TrackingHistoryModel(track.TrackingHistory);
+            
+            return View(checkpoints);
+        }
+
         // GET: /<controller>/
         public IActionResult Index()
         {
-            //display list of existing packages
             List<Package> packages = context.Packages.ToList();
             return View(packages);
         }

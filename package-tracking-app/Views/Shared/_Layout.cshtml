@@ -29,6 +29,8 @@
                                 Setting
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-controller="TrackPackages" asp-action="GetStatus">Status</a>
+                                <a class="dropdown-item" asp-controller="TrackPackages" asp-action="GetTrackingHistory">History</a>
                                 <a class="dropdown-item" asp-controller="Setting" asp-action="Profile">Profile</a>
                                 <a class="dropdown-item" asp-controller="Setting" asp-action="Notifications">Notifications</a>
                                 <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">Log Out</a>
