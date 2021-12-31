@@ -25,12 +25,34 @@ namespace package_tracking_app.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            AddPackageViewModel addPackageViewModel = new AddPackageViewModel();
-            return View(addPackageViewModel);
+            MainModel mainModel = new MainModel();
+            mainModel.AddPackageViewModel = new AddPackageViewModel();
+            //AddPackageViewModel addPackageViewModel = new AddPackageViewModel();
+            return View(mainModel);
         }
 
         [HttpPost]
-        public IActionResult ProcessAddForm(AddPackageViewModel addPackageViewModel)
+        public IActionResult ProcessAddForm(MainModel mainModel)
+        {
+            //add new package info if input meets validation
+            if (ModelState.IsValid)
+            {
+                Package newPackage = new Package
+                {
+                    TrackingNumber = mainModel.AddPackageViewModel.TrackingNumber,
+                    Carrier = mainModel.AddPackageViewModel.Carrier,
+                    Description = mainModel.AddPackageViewModel.Description
+                };
+
+                context.Packages.Add(newPackage);
+                context.SaveChanges();
+                return RedirectToAction("Index", "TrackPackages");
+            }
+
+            return View("Index", mainModel);
+        }
+
+        /*public IActionResult ProcessAddForm(AddPackageViewModel addPackageViewModel)
         {
             //add new package info if input meets validation
             if (ModelState.IsValid)
@@ -48,6 +70,6 @@ namespace package_tracking_app.Controllers
             }
 
             return View("Index", addPackageViewModel);
-        }
+        }*/
     }
 }

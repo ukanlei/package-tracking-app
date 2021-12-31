@@ -11,6 +11,7 @@ namespace package_tracking_app.ViewModels
         [Required(ErrorMessage = "Carrier required")]
         public string Carrier { get; set; }
 
+        [Required(ErrorMessage = "Description required")]
         public string Description { get; set; }
 
         public AddPackageViewModel()

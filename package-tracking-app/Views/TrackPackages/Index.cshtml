@@ -1,7 +1,10 @@
-﻿@model List<package_tracking_app.Models.Package>
+﻿@using package_tracking_app.ViewModels
+@model MainModel;
+
 
 <a asp-controller="Home" asp-action="Index"> Add another package</a>
-@if (Model.Count == 0)
+<partial name="~/Views/Shared/_AddParcelFormPartial.cshtml" />
+@if (Model.PackageList.Count == 0)
 {
     <p>There are no packages to track yet!</p>
 }
@@ -21,7 +24,7 @@ else
                 Carrier
             </th>
         </tr>
-        @foreach (Package package in Model)
+        @foreach (Package package in Model.PackageList)
         {
             <tr>
                 <td><a asp-controller="TrackPackages" asp-action="EditName" asp-route-id="@package.Id">EDIT</a></td>
