@@ -1,24 +1,25 @@
-﻿@model package_tracking_app.Models.Package
+﻿@using package_tracking_app.ViewModels
+@model MainModel;
 
-    <form asp-controller="Home" asp-action="EditName" method="post">
-        <table class="table">
-            <tr>
-                <th>
-                    Old Description
-                </th>
-                <th>
-                    New Description
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    @Model.Description
-                </td>
-                <td>
-                    <input type="text" class="form-control" name="newName" placeholder="Enter new description">
-                </td>
-            </tr>
-        </table>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<form asp-controller="Home" asp-action="EditName" method="post">
+    <table class="table">
+        <tr>
+            <th>
+                Old Description
+            </th>
+            <th>
+                New Description
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Model.Package.Description
+            </td>
+            <td>
+                <input type="text" class="form-control" name="newName" placeholder="Enter new description">
+            </td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 

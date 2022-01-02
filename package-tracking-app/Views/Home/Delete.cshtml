@@ -1,8 +1,9 @@
-﻿@model List<package_tracking_app.Models.Package>
+﻿@using package_tracking_app.ViewModels
+@model MainModel;
 
 <h1>Delete Pacakge</h1>
 
-@if (Model.Count == 0)
+@if (Model.PackageList.Count == 0)
 {
     <p>There are no packages to track yet!</p>
 }
@@ -22,16 +23,16 @@ else
                     Carrier
                 </th>
             </tr>
-            @foreach (Package package in Model)
+            @foreach (Package package in Model.PackageList)
             {
-        <tr>
-            <td>
-                <input type="checkbox" name="ids" value="@package.Id" class="form-control">
-            </td>
-            <td><a asp-controller="Home" asp-action="Detail" asp-route-id="@package.Id">@package.Description</a></td>
-            <td>@package.TrackingNumber</td>
-            <td>@package.Carrier</td>
-        </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="ids" value="@package.Id" class="form-control">
+                    </td>
+                    <td><a asp-controller="Home" asp-action="Detail" asp-route-id="@package.Id">@package.Description</a></td>
+                    <td>@package.TrackingNumber</td>
+                    <td>@package.Carrier</td>
+                </tr>
             }
         </table>
         <input type="submit" value="Delete Selected Packages" class="btn btn-danger">
