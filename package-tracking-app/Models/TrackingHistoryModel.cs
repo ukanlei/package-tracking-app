@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Shippo;
 namespace package_tracking_app.Models
 {
     public class TrackingHistoryModel
 
     {
-        public List<Shippo.TrackingHistory> Checkpoints { get; set; }
+        public List<TrackingHistory> Checkpoints { get; set; }
 
-        public TrackingHistoryModel(List<Shippo.TrackingHistory> trackingHistory)
+        public TrackingHistoryModel(List<TrackingHistory> checkpoints)
         {
-            Checkpoints = trackingHistory;
+            Checkpoints = checkpoints;
+            
         }
 
     }

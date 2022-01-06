@@ -15,9 +15,9 @@
             <select asp-for="@Model.AddPackageViewModel.Carrier" id="Carrier" class="form-control">
                 <option selected>Choose...</option>
                 <option>UPS</option>
-                <option>FedEx</option>
-                <option>DHL Express</option>
                 <option>USPS</option>
+                <option>shippo</option>
+
             </select>
             <span asp-validation-for="@Model.AddPackageViewModel.Carrier"></span>
         </div>

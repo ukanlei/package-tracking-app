@@ -5,9 +5,19 @@
 
 <table>
     <tr>
-        <th>Date</th>
         <th>Status</th>
+        <th>Date</th>
+        <th>Details</th>
         <th>Location</th>
     </tr>
+    @foreach (var checkpoint in Model.TrackHistory.Checkpoints)
+    {
+<tr>
+    <th>@checkpoint.Status</th>
+    <th>@checkpoint.StatusDate</th>
+    <th>@checkpoint.StatusDetails</th>
+    @*<th>@checkpoint.Location.City</th>*@
 
+</tr>
+    }
 </table>
