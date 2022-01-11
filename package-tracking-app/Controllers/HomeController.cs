@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using package_tracking_app.Data;
 using package_tracking_app.Models;
 using package_tracking_app.ViewModels;
+using Shippo;
 
 namespace package_tracking_app.Controllers
 {
@@ -37,9 +38,30 @@ namespace package_tracking_app.Controllers
         }
 
         public IActionResult Detail(int id)
-        {
+        {   
+            //if status code is 400 -> locate error -> return custom error message
             MainModel mainModel = new MainModel();
             mainModel.Package = context.Packages.Find(id);
+
+            //needs work. when id selected, grab from database for carrier and tracking# as arguemnts
+            APIResource resource = new APIResource("");
+            string TRACKING_NO = "SHIPPO_DELIVERED";
+            Track track = resource.RetrieveTracking("shippo", TRACKING_NO);
+            mainModel.TrackHistory = new TrackingHistoryModel(track.TrackingHistory);
+
+            //mainModel.Location = new LocationModel();
+            /*
+
+            MainModel mainModel = new MainModel();
+            mainModel.Package = context.Packages.Find(id);
+
+            APIResource resource = new APIResource("shippo_test_7fdb22539d4d47a5ae4c5ab07377a2347402d965");
+            string TRACKING_NO = "SHIPPO_DELIVERED";
+            Track track = resource.RetrieveTracking("shippo", TRACKING_NO);
+            mainModel.TrackHistory = new TrackingHistoryModel(track.TrackingHistory);
+            //mainModel.Location = new LocationModel();*/
+
+
             return View(mainModel);
         }
 
@@ -61,14 +83,20 @@ namespace package_tracking_app.Controllers
         [HttpPost]
         public IActionResult ProcessAddForm(MainModel mainModel)
         {
+            APIResource resource = new APIResource("");
+            string carrier = mainModel.AddPackageViewModel.Carrier;
+            string trackingNumber = mainModel.AddPackageViewModel.TrackingNumber;
+            string description = mainModel.AddPackageViewModel.Description;
+            Track track = resource.RetrieveTracking(carrier, trackingNumber);
+
             //add new package info if input meets validation
             if (ModelState.IsValid)
             {
                 Package newPackage = new Package
                 {
-                    TrackingNumber = mainModel.AddPackageViewModel.TrackingNumber,
-                    Carrier = mainModel.AddPackageViewModel.Carrier,
-                    Description = mainModel.AddPackageViewModel.Description
+                    TrackingNumber = trackingNumber,
+                    Carrier = carrier,
+                    Description = description
                 };
 
                 context.Packages.Add(newPackage);
