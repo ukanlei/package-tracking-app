@@ -39,14 +39,16 @@ namespace package_tracking_app.Controllers
 
         public IActionResult Detail(int id)
         {   
-            //if status code is 400 -> locate error -> return custom error message
+     
             MainModel mainModel = new MainModel();
+            APIResource resource = new APIResource("");
+
             mainModel.Package = context.Packages.Find(id);
 
             //needs work. when id selected, grab from database for carrier and tracking# as arguemnts
-            APIResource resource = new APIResource("");
-            string TRACKING_NO = "SHIPPO_DELIVERED";
-            Track track = resource.RetrieveTracking("shippo", TRACKING_NO);
+            string trackingNumber = context.Packages.Find(id).TrackingNumber; //grab from package table
+            string carrier = context.Packages.Find(id).Carrier;
+            Track track = resource.RetrieveTracking(carrier, trackingNumber);
             mainModel.TrackHistory = new TrackingHistoryModel(track.TrackingHistory);
 
             //mainModel.Location = new LocationModel();
@@ -83,6 +85,7 @@ namespace package_tracking_app.Controllers
         [HttpPost]
         public IActionResult ProcessAddForm(MainModel mainModel)
         {
+            //if status code is 400 -> locate error -> return custom error message
             APIResource resource = new APIResource("");
             string carrier = mainModel.AddPackageViewModel.Carrier;
             string trackingNumber = mainModel.AddPackageViewModel.TrackingNumber;
