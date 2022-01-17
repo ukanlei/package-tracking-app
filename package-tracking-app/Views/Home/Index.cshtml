@@ -1,7 +1,6 @@
 ﻿@using package_tracking_app.ViewModels
 @model MainModel;
 
-<a asp-controller="Home" asp-action="Index"> Add another package</a>
 <partial name="~/Views/Shared/_AddParcelFormPartial.cshtml" />
 @if (Model.PackageList.Count == 0)
 {
