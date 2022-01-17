@@ -1,23 +1,29 @@
 ﻿@using package_tracking_app.ViewModels
 @model MainModel;
 
-<h1>@Model.Package.Description: @Model.Package.TrackingNumber </h1>
-
-<table>
+<div class="row">
+    <h1>@Model.Package.Description: @Model.Package.TrackingNumber </h1>
+</div>
+<table class="table">
+    <thead>
     <tr>
-        <th>Status</th>
-        <th>Date</th>
-        <th>Details</th>
-        <th>Location</th>
+        <th scope="col">Status</th>
+        <th scope="col">Date</th>
+        <th scope="col">Details</th>
+        <th scope="col">Location</th>
     </tr>
+    </thead>
+        <tbody>
     @foreach (var checkpoint in Model.TrackHistory.Checkpoints)
     {
-<tr>
-    <th>@checkpoint.Status</th>
-    <th>@checkpoint.StatusDate</th>
-    <th>@checkpoint.StatusDetails</th>
-    @*<th>@checkpoint.Location.City</th>*@
 
-</tr>
+            <tr>
+                <td>@checkpoint.Status</td>
+                <td>@checkpoint.StatusDate</td>
+                <td>@checkpoint.StatusDetails</td>
+                @*<th>@checkpoint.Location.City</th>*@
+
+            </tr>
     }
+        </tbody>
 </table>
