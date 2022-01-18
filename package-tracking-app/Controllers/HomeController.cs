@@ -74,6 +74,7 @@ namespace package_tracking_app.Controllers
         {
             //if status code is 400 -> locate error -> return custom error message
             APIResource resource = new APIResource("");
+            mainModel.PackageList = context.Packages.ToList();
             string carrier = mainModel.AddPackageViewModel.Carrier;
             string trackingNumber = mainModel.AddPackageViewModel.TrackingNumber;
             string description = mainModel.AddPackageViewModel.Description;
