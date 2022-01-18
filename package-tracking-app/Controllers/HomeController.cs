@@ -41,7 +41,7 @@ namespace package_tracking_app.Controllers
         {   
      
             MainModel mainModel = new MainModel();
-            APIResource resource = new APIResource("");
+            APIResource resource = new APIResource("");//insert api key
 
             mainModel.Package = context.Packages.Find(id);
 
