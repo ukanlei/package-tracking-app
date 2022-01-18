@@ -51,19 +51,6 @@ namespace package_tracking_app.Controllers
             Track track = resource.RetrieveTracking(carrier, trackingNumber);
             mainModel.TrackHistory = new TrackingHistoryModel(track.TrackingHistory);
 
-            //mainModel.Location = new LocationModel();
-            /*
-
-            MainModel mainModel = new MainModel();
-            mainModel.Package = context.Packages.Find(id);
-
-            APIResource resource = new APIResource("shippo_test_7fdb22539d4d47a5ae4c5ab07377a2347402d965");
-            string TRACKING_NO = "SHIPPO_DELIVERED";
-            Track track = resource.RetrieveTracking("shippo", TRACKING_NO);
-            mainModel.TrackHistory = new TrackingHistoryModel(track.TrackingHistory);
-            //mainModel.Location = new LocationModel();*/
-
-
             return View(mainModel);
         }
 
