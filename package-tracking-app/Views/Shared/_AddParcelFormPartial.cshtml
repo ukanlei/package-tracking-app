@@ -2,15 +2,15 @@
 @model MainModel;
 
 <form asp-controller="Home" asp-action="ProcessAddForm">
-    <div class="form-row">
-        <div class="form-group col-md-6">
+    <div>
+        <div style="margin-bottom: 7px">
             <label asp-for="@Model.AddPackageViewModel.TrackingNumber">Tracking number</label>
             <input type="text" class="form-control" id="TrackingNumber" asp-for="@Model.AddPackageViewModel.TrackingNumber" placeholder="Enter tracking number">
             <span asp-validation-for="@Model.AddPackageViewModel.TrackingNumber"></span>
         </div>
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-4">
+    <div>
+        <div style="margin-bottom: 7px">
             <label asp-for="@Model.AddPackageViewModel.Carrier">Carrier</label>
             <select asp-for="@Model.AddPackageViewModel.Carrier" id="Carrier" class="form-control">
                 <option selected>Choose...</option>
@@ -22,8 +22,8 @@
             <span asp-validation-for="@Model.AddPackageViewModel.Carrier"></span>
         </div>
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
+    <div>
+        <div style="margin-bottom: 10px" >
             <label asp-for="@Model.AddPackageViewModel.Description">Description</label>
             <input type="text" class="form-control" id="Description" asp-for="@Model.AddPackageViewModel.Description" placeholder="Enter a description">
         </div>

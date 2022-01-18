@@ -1,14 +1,18 @@
 ﻿@using package_tracking_app.ViewModels
 @model MainModel;
 
-<partial name="~/Views/Shared/_AddParcelFormPartial.cshtml" />
-@if (Model.PackageList.Count == 0)
-{
-    <p>There are no packages to track yet!</p>
-}
-else
-{
-    <a asp-controller="Home" asp-action="Delete"> Delete</a>
+    <div class="form-group col-md-5 card p-4 bg-light" style="display: inline-block">
+        <partial name="~/Views/Shared/_AddParcelFormPartial.cshtml" />
+    </div>
+
+        @if (Model.PackageList.Count == 0)
+        {
+            <p>There are no packages to track yet!</p>
+        }
+        else
+        {
+<div>
+    <h1>All Parcels</h1>
     <table class="table">
         <tr>
             <th></th>
@@ -32,4 +36,7 @@ else
             </tr>
         }
     </table>
-}
+    <a style="color: red;" asp-controller="Home" asp-action="Delete"> Delete a package</a>
+</div>
+
+        }
