@@ -14,7 +14,7 @@
         <div class="input-bottom">
             <label asp-for="@Model.AddPackageViewModel.Carrier">Carrier</label>
             <select asp-for="@Model.AddPackageViewModel.Carrier" id="Carrier" class="form-control">
-                <option selected>Choose...</option>
+                <option selected>Select Carrier...</option>
                 <option>UPS</option>
                 <option>USPS</option>
                 <option>shippo</option>
@@ -24,9 +24,10 @@
         </div>
     </div>
     <div>
-        <div class="input-button" >
+        <div class="input-button">
             <label asp-for="@Model.AddPackageViewModel.Description">Description</label>
             <input type="text" class="form-control" id="Description" asp-for="@Model.AddPackageViewModel.Description" placeholder="Enter a description">
+            <span class="red-font" asp-validation-for="@Model.AddPackageViewModel.Description"></span>
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
