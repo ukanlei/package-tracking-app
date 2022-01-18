@@ -1,16 +1,17 @@
 ﻿@using package_tracking_app.ViewModels
 @model MainModel;
 
+
 <form asp-controller="Home" asp-action="ProcessAddForm">
     <div>
-        <div style="margin-bottom: 7px">
+        <div class="input-bottom">
             <label asp-for="@Model.AddPackageViewModel.TrackingNumber">Tracking number</label>
             <input type="text" class="form-control" id="TrackingNumber" asp-for="@Model.AddPackageViewModel.TrackingNumber" placeholder="Enter tracking number">
-            <span asp-validation-for="@Model.AddPackageViewModel.TrackingNumber"></span>
+            <span class="red-font" asp-validation-for="@Model.AddPackageViewModel.TrackingNumber"></span>
         </div>
     </div>
     <div>
-        <div style="margin-bottom: 7px">
+        <div class="input-bottom">
             <label asp-for="@Model.AddPackageViewModel.Carrier">Carrier</label>
             <select asp-for="@Model.AddPackageViewModel.Carrier" id="Carrier" class="form-control">
                 <option selected>Choose...</option>
@@ -19,11 +20,11 @@
                 <option>shippo</option>
 
             </select>
-            <span asp-validation-for="@Model.AddPackageViewModel.Carrier"></span>
+            <span class="red-font" asp-validation-for="@Model.AddPackageViewModel.Carrier"></span>
         </div>
     </div>
     <div>
-        <div style="margin-bottom: 10px" >
+        <div class="input-button" >
             <label asp-for="@Model.AddPackageViewModel.Description">Description</label>
             <input type="text" class="form-control" id="Description" asp-for="@Model.AddPackageViewModel.Description" placeholder="Enter a description">
         </div>

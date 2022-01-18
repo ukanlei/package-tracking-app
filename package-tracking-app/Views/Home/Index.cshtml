@@ -1,7 +1,7 @@
 ﻿@using package_tracking_app.ViewModels
 @model MainModel;
 
-    <div class="form-group col-md-5 card p-4 bg-light" style="display: inline-block">
+    <div class="form-group col-md-5 card p-4 bg-light partial-form">
         <partial name="~/Views/Shared/_AddParcelFormPartial.cshtml" />
     </div>
 
@@ -36,7 +36,7 @@
             </tr>
         }
     </table>
-    <a style="color: red;" asp-controller="Home" asp-action="Delete"> Delete a package</a>
+    <a class="red-font" asp-controller="Home" asp-action="Delete"> Delete a package</a>
 </div>
 
         }
