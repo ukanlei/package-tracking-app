@@ -77,10 +77,11 @@ namespace package_tracking_app.Controllers
             string carrier = mainModel.AddPackageViewModel.Carrier;
             string trackingNumber = mainModel.AddPackageViewModel.TrackingNumber;
             string description = mainModel.AddPackageViewModel.Description;
-            Track track = resource.RetrieveTracking(carrier, trackingNumber);
 
+            //Track track = resource.RetrieveTracking(carrier, trackingNumber);
             //add new package info if input meets validation
-            if (ModelState.IsValid && carrier != "Select Carrier...")
+
+            if (ModelState.IsValid && carrier == "shippo" )
             {
                 Package newPackage = new Package
                 {
