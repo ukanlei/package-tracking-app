@@ -8,7 +8,6 @@ namespace package_tracking_app.ViewModels
         [Required(ErrorMessage = "Tracking number required")]
         public string TrackingNumber { get; set; }
 
-        [Required(ErrorMessage = "Carrier required")]
         public string Carrier { get; set; }
 
         [Required(ErrorMessage = "Description required")]

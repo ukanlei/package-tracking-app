@@ -45,7 +45,6 @@ namespace package_tracking_app.Controllers
 
             mainModel.Package = context.Packages.Find(id);
 
-            //needs work. when id selected, grab from database for carrier and tracking# as arguemnts
             string trackingNumber = context.Packages.Find(id).TrackingNumber; //grab from package table
             string carrier = context.Packages.Find(id).Carrier;
             Track track = resource.RetrieveTracking(carrier, trackingNumber);
@@ -81,7 +80,7 @@ namespace package_tracking_app.Controllers
             Track track = resource.RetrieveTracking(carrier, trackingNumber);
 
             //add new package info if input meets validation
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && carrier != "Select Carrier...")
             {
                 Package newPackage = new Package
                 {
@@ -94,7 +93,6 @@ namespace package_tracking_app.Controllers
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View("Index", mainModel);
         }
 
