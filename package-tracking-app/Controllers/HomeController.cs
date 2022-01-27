@@ -2,23 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using package_tracking_app.Areas.Identity.Data;
 using package_tracking_app.Data;
 using package_tracking_app.Models;
 using package_tracking_app.ViewModels;
 using Shippo;
 
 namespace package_tracking_app.Controllers
-{
+{ 
+    [Authorize]
     public class HomeController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext context;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbcontext)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbcontext, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _logger = logger;
             context = dbcontext;
         }
@@ -68,6 +74,7 @@ namespace package_tracking_app.Controllers
             return View(mainModel);
         }
 
+        
         [HttpPost]
         public IActionResult ProcessAddForm(MainModel mainModel)
         {
@@ -77,17 +84,20 @@ namespace package_tracking_app.Controllers
             string carrier = mainModel.AddPackageViewModel.Carrier;
             string trackingNumber = mainModel.AddPackageViewModel.TrackingNumber;
             string description = mainModel.AddPackageViewModel.Description;
+            string userId = _userManager.GetUserId(User);
 
-            //Track track = resource.RetrieveTracking(carrier, trackingNumber);
+            Track track = resource.RetrieveTracking(carrier, trackingNumber);
             //add new package info if input meets validation
 
             if (ModelState.IsValid && carrier == "shippo" )
             {
+        
                 Package newPackage = new Package
                 {
                     TrackingNumber = trackingNumber,
                     Carrier = carrier,
-                    Description = description
+                    Description = description,
+                    UserId = userId
                 };
 
                 context.Packages.Add(newPackage);
