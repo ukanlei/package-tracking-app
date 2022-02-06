@@ -21,7 +21,13 @@
                 <td>@checkpoint.Status</td>
                 <td>@checkpoint.StatusDate</td>
                 <td>@checkpoint.StatusDetails</td>
-                @*<th>@checkpoint.Location.City</th>*@
+                @if (checkpoint.Location == null)
+                {
+                    <td>unknown</td>
+                } else
+                {
+                     <td>@checkpoint.Location.City</td>
+                }
 
             </tr>
     }
