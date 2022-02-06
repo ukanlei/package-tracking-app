@@ -11,8 +11,6 @@ namespace package_tracking_app.Models
         public Package Package { get; set; }
         public TrackingStatusModel TrackStatus { get; set; }
         public TrackingHistoryModel TrackHistory { get; set; }
-        public LocationModel Location { get; set; }
-        
 
         public MainModel()
         {
