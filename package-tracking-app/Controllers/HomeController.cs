@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using package_tracking_app.Areas.Identity.Data;
 using package_tracking_app.Data;
 using package_tracking_app.Models;
@@ -47,7 +48,6 @@ namespace package_tracking_app.Controllers
 
         public IActionResult Detail(int id)
         {   
-     
             MainModel mainModel = new MainModel();
             APIResource resource = new APIResource("");//insert api key
 
@@ -81,7 +81,7 @@ namespace package_tracking_app.Controllers
         public IActionResult ProcessAddForm(MainModel mainModel)
         {
             //if status code is 400 -> locate error -> return custom error message
-            APIResource resource = new APIResource("");
+            APIResource resource = new APIResource("");//insert api key
             mainModel.PackageList = context.Packages.ToList();
             string carrier = mainModel.AddPackageViewModel.Carrier;
             string trackingNumber = mainModel.AddPackageViewModel.TrackingNumber;
