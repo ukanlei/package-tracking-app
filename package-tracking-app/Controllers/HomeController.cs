@@ -57,6 +57,7 @@ namespace package_tracking_app.Controllers
             string carrier = context.Packages.Find(id).Carrier;
             Track track = resource.RetrieveTracking(carrier, trackingNumber);
             mainModel.TrackHistory = new TrackingHistoryModel(track.TrackingHistory);
+            mainModel.TrackHistory.Checkpoints.Reverse(); //reverse order of package status with Reverse method
 
             return View(mainModel);
         }
