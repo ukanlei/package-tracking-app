@@ -92,11 +92,12 @@ namespace package_tracking_app.Controllers
             string carrier = mainModel.AddPackageViewModel.Carrier;
             string trackingNumber = mainModel.AddPackageViewModel.TrackingNumber;
             string description = mainModel.AddPackageViewModel.Description;
+            bool duplicate = userPackages.Any(t => t.TrackingNumber == trackingNumber);
 
             //Track track = resource.RetrieveTracking(carrier, trackingNumber);
             //add new package info if input meets validation
 
-            if (ModelState.IsValid && carrier == "shippo")
+            if (ModelState.IsValid && carrier == "shippo" && duplicate == false)
             {
                 Package newPackage = new Package
                 {
