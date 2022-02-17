@@ -64,8 +64,10 @@ namespace package_tracking_app.Controllers
 
         public IActionResult Delete()
         {
+            string userId = _userManager.GetUserId(User);
             MainModel mainModel = new MainModel();
-            mainModel.PackageList = context.Packages.ToList();
+            var userPackages = context.Packages.Where(p => p.UserId == userId);
+            mainModel.PackageList = userPackages.ToList();
             return View(mainModel);
         }
 
