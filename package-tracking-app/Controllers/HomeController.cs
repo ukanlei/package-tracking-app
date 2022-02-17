@@ -85,18 +85,19 @@ namespace package_tracking_app.Controllers
         {
             //if status code is 400 -> locate error -> return custom error message
             APIResource resource = new APIResource("");//insert api key
-            mainModel.PackageList = context.Packages.ToList();
+
+            string userId = _userManager.GetUserId(User);
+            var userPackages = context.Packages.Where(p => p.UserId == userId);
+            mainModel.PackageList = userPackages.ToList();
             string carrier = mainModel.AddPackageViewModel.Carrier;
             string trackingNumber = mainModel.AddPackageViewModel.TrackingNumber;
             string description = mainModel.AddPackageViewModel.Description;
-            string userId = _userManager.GetUserId(User);
 
-            Track track = resource.RetrieveTracking(carrier, trackingNumber);
+            //Track track = resource.RetrieveTracking(carrier, trackingNumber);
             //add new package info if input meets validation
 
-            if (ModelState.IsValid && carrier == "shippo" )
+            if (ModelState.IsValid && carrier == "shippo")
             {
-        
                 Package newPackage = new Package
                 {
                     TrackingNumber = trackingNumber,
@@ -111,7 +112,6 @@ namespace package_tracking_app.Controllers
             }
             return View("Index", mainModel);
         }
-
 
         [HttpPost] //delete package
         public IActionResult Delete(int[] ids)
